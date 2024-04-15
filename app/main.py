@@ -17,21 +17,23 @@ ACTIONS = {
         "json": JSONSerializer,
         "xml": XMLSerializer
     }
-
 }
 
 
 def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
     for cmd, method_type in commands:
-        if cmd == "display":
-            handler = ACTIONS[cmd][method_type]
-            handler(book).display()
-        elif cmd == "print":
-            handler = ACTIONS[cmd][method_type]
-            handler(book).print_book()
-        elif cmd == "serialize":
-            serializer = ACTIONS[cmd][method_type]
-            return serializer(book).serialize()
+        try:
+            if cmd == "display":
+                handler = ACTIONS[cmd][method_type]
+                handler(book).display()
+            elif cmd == "print":
+                handler = ACTIONS[cmd][method_type]
+                handler(book).print_book()
+            elif cmd == "serialize":
+                serializer = ACTIONS[cmd][method_type]
+                return serializer(book).serialize()
+        except KeyError:
+            raise ValueError(f"Unknown method type: {method_type}")
 
 
 if __name__ == "__main__":
