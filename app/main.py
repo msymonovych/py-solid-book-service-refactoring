@@ -1,6 +1,6 @@
-from app.book import Book
-from app.display_handler import ConsoleDisplayHandler, ReverseDisplayHandler
-from app.print_handler import ConsolePrintHandler, ReversePrintHandler
+from app.books import Book
+from app.display_handlers import ConsoleDisplayHandler, ReverseDisplayHandler
+from app.print_handlers import ConsolePrintHandler, ReversePrintHandler
 from app.serializers import JSONSerializer, XMLSerializer
 
 
